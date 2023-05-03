@@ -12,20 +12,19 @@ public:
         String name;
         PathReconstructionNode* next;
 
-        PathReconstructionNode(String city){
+        PathReconstructionNode(const String& city){
             name = city;
             next = nullptr;
 
         }
     };
     PathReconstructionNode* head;
-    PathReconstructionNode* tail;
 
     PathReconstructionList();
 
     ~PathReconstructionList();
 
-    void reverseOrderPathAdding(String name);
+    void reverseOrderPathAdding(const String& name);
 };
 
 

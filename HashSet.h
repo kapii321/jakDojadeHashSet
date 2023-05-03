@@ -6,7 +6,7 @@
 #define JAKDOJADEHASHSET_HASHSET_H
 #include "String.h"
 #include "DoubleLinkedList.h"
-#define HASHMAPSIZE 50000
+#define HASHMAPSIZE 87531
 
 class HashSet {
 public:
@@ -20,7 +20,7 @@ public:
 
     HashSet();
 
-    ~HashSet() = default;
+    ~HashSet();
 
 
     unsigned int hashFunction(const String &strKey);
@@ -30,8 +30,8 @@ public:
     DoubleLinkedList *find(unsigned int key);
 
     void BFSfindNeighbours(HashSet *listOfCities, char **map, int h, int w);
-    void dijkstra(HashSet *listOfCities, int startId, int endId, int operationType, String source, String destination);
-    void updateNeighboursFlights(String source, String destination, int dist);
+    void dijkstra( int startId, int endId, int operationType, const String& source);
+    void updateNeighboursFlights(const String& source, const String& destination, int dist);
 
 };
 

@@ -16,7 +16,7 @@ PriorityQueue::~PriorityQueue() {
     }
 }
 
-void PriorityQueue::enqueue( int id, int dist,  String name){
+void PriorityQueue::enqueue( int id, int dist,  const String& name){
     priorityQueueNode* newNode = new priorityQueueNode( id,dist,name);
     if(head  ==nullptr){
         head = newNode;
@@ -49,9 +49,3 @@ bool PriorityQueue::isEmpty() {
     return head==nullptr;
 }
 
-PriorityQueue::priorityQueueNode PriorityQueue::peek() {
-    int rPriority = head->priority;
-    int rId = head->cityId;
-    String rName = head->cityName;
-    return{ rId, rPriority,rName};
-}

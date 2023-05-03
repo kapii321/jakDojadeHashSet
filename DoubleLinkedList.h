@@ -15,10 +15,6 @@ struct Position{
     int y=0;
 };
 
-/*struct DijkstraReturnStruct{
-    int * distance;
-    String * names;
-};*/
 
 class DoubleLinkedList {
     friend class Queue;
@@ -30,10 +26,10 @@ public:
         Position coordinates;
         DllNode* prev;
         DllNode* next;
-        NeighboursList neighbours;// lista miasto + odleglosc
-        DllNode(const String *name, int x, int y, int pID){
+        NeighboursList neighbours;
+        DllNode(const String& name, int x, int y, int pID){
             id = pID;
-            cityName = *name;
+            cityName = name;
             coordinates.x= x;
             coordinates.y =y;
             prev = nullptr;
@@ -49,22 +45,8 @@ public:
 
     ~DoubleLinkedList();
 
-    void addNodeToEnd(const String *name, int x, int y, int id);
+    void addNodeToEnd(const String &name, int x, int y, int id);
 
-    void removeNode(String name);
-
-    //  DllNode* getNodeByName(String name);
-
-    void BFSfindNeighbours(DoubleLinkedList* listOfCities, char ** map, int h ,int w);
-
-    void dijkstra(DoubleLinkedList* listOfCities, int numberOfNodes, int startId, int endId, int operationType);
-
-    int getNumberOfCities();
-
-    void updateNeighboursFlights(String source, String destination, int dist);
-
-
-    //String* citiesCrossedOnPath(DoubleLinkedList* cities, int numbOfCities, int sId, int eId, String sName);
 };
 
 

@@ -24,15 +24,12 @@ public:
 
     int length() const;
 
-    bool empty() const;
-
-
     char* getString() const;
 
     char* addCharacter(char c );
 
     void findCityName(char** array, int x, int y, int height, int width, String& city);
-    int stringToIntConv();
+    int stringToIntConv() const;
 
     String& operator=(const String& other);
 

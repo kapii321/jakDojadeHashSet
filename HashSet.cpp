@@ -9,13 +9,21 @@ HashSet::HashSet() {
  
 }
 
+HashSet::~HashSet() {
+    for(int i=0;i<HASHMAPSIZE;i++){
+        if(hashMap[i]!=nullptr){
+            delete hashMap[i];
+        }
+    }
+}
+
 
 unsigned int HashSet::hashFunction(const String &strKey) {
-    unsigned int hash = 5831;
+    unsigned int hash = 0;
     const char* str = strKey.getString();
     int sizeH = strKey.length();
     for(int i=0;i<sizeH;i++){
-        hash =((hash<<5)+ hash) + str[i];
+        hash = str[i] +(hash<<6) + (hash <<16) - hash;
     }
     return hash% HASHMAPSIZE;
 }
@@ -24,12 +32,12 @@ unsigned int HashSet::hashFunction(const String &strKey) {
 void HashSet::insert(const String &strKey, int x, int y) {
     unsigned int hash = hashFunction(strKey);
     if(hashMap[hash] == nullptr){
-        hashNode* newNode = new hashNode;           //zrob destruktor bo wycieki
+        hashNode* newNode = new hashNode;
         newNode->key = hash;
         hashMap[hash] = newNode;
     }
     DoubleLinkedList& list = hashMap[hash]->values;
-    list.addNodeToEnd(&strKey,x,y,size);
+    list.addNodeToEnd(strKey,x,y,size);
     size++;
 
 }
@@ -122,13 +130,13 @@ void HashSet::BFSfindNeighbours(HashSet *listOfCities, char **map, int h, int w)
     delete[] visited;
 }
 
-void HashSet::dijkstra(HashSet *listOfCities, int startId, int endId, int operationType,String source, String destination) {
+void HashSet::dijkstra( int startId, int endId, int operationType,const String& source) {
     if(size<=0){
         return;
     }
     bool *visited= new bool[size];
     int* prev= new int[size];
-    String* prevNames = new String[size];   //delete na koncu bo sa wycieki
+    String* prevNames = new String[size];
     int* dist= new int[size];
     for(int i=0; i<size;i++){
         visited[i] = false;
@@ -160,7 +168,6 @@ void HashSet::dijkstra(HashSet *listOfCities, int startId, int endId, int operat
             if(newDistance < dist[currentNeighbour->id]){
                 prev[currentNeighbour->id] = getId;
                 prevNames[currentNeighbour->id] = getName;
-                // dodawac jednoczesnie stringa i id zamiast iterowac na koncu
                 sizeOfPath++;
                 dist[currentNeighbour->id] = newDistance;
                 pq.enqueue(currentNeighbour->id, newDistance,currentNeighbour->cityName);
@@ -185,20 +192,6 @@ void HashSet::dijkstra(HashSet *listOfCities, int startId, int endId, int operat
                         }
                     }
                     a = i;
-                    /*
-                    for(int c= 0;c<HASHMAPSIZE;c++) {
-                        hashNode* currentCity = listOfCities->hashMap[c];
-                        if(currentCity == nullptr) continue;
-                        for (DoubleLinkedList::DllNode *currentNode = currentCity->values.head;
-                             currentNode != nullptr; currentNode = currentNode->next) {
-                            if (i == currentNode->id) {
-                                citiesCrossed.reverseOrderPathAdding(
-                                        currentNode->cityName);
-                                break;
-                            }
-                        }
-                    }
-                     */
                 }
                 for(PathReconstructionList::PathReconstructionNode* first = citiesCrossed.head; first !=nullptr;first = first->next){
                     if(first == citiesCrossed.head ) continue;
@@ -208,15 +201,17 @@ void HashSet::dijkstra(HashSet *listOfCities, int startId, int endId, int operat
             delete[] visited;
             delete[] dist;
             delete[] prev;
+            delete[] prevNames;
             return;
         }
     }
     delete[] visited;
     delete[] dist;
     delete[] prev;
+    delete[] prevNames;
 }
 
-void HashSet::updateNeighboursFlights(String source, String destination, int dist) {
+void HashSet::updateNeighboursFlights(const String& source, const String& destination, int dist) {
     int id=-1;
 
    unsigned int keySource = hashFunction(source);

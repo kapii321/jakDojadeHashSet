@@ -61,11 +61,6 @@ int String::length() const {
     return size;
 }
 
-bool String::empty() const {
-    return size ==0;
-}
-
-
 
 char* String::getString() const {
     return str;
@@ -98,7 +93,7 @@ void String::findCityName(char** array, int x, int y, int height, int width, Str
     }
 }
 
-int String::stringToIntConv() {
+int String::stringToIntConv() const {
     const char* string = this->getString();
     char * pEnd;
     int output=strtol(string,&pEnd,10);
@@ -109,9 +104,14 @@ int String::stringToIntConv() {
 
 String &String::operator=(const String &other) {
     if (this != &other) {
+        char* new_str = new char[other.size +1];
+        if(!new_str){
+            return *this;
+        }
+        strcpy(new_str,other.str);
+        delete[] str;
+        str = new_str;
         size = other.size;
-        str = new char[size + 2];
-        strcpy(str, other.str);
     }
     return *this;
 }

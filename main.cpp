@@ -1,12 +1,11 @@
 #include <iostream>
+#include <cstdio>
 #include "String.h"
 #include "DoubleLinkedList.h"
 #include "HashSet.h"
 using namespace std;
 class String;
 int main() {
-    std::ios::sync_with_stdio(false);
-    cin.tie(nullptr);
     int w,h;
     String wInput= "";
     String hInput = "";
@@ -23,7 +22,7 @@ int main() {
     for (int i = 0; i < h; i++) {
         input[i] = new char[w];
         for(int j = 0; j < w; j++){
-            int c = std::getchar();
+            int c = getchar();
             if(c < 33){
                 j--;
                 continue;
@@ -137,7 +136,7 @@ int main() {
            }
 
 
-            Cities->dijkstra(Cities,startId,endId,operationType,source,destination);
+            Cities->dijkstra(startId,endId,operationType,source);
             cout << endl;
             source = "";
             destination = "";

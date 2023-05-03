@@ -18,7 +18,7 @@ private:
         int priority;
         String cityName;
         struct priorityQueueNode* next;
-        priorityQueueNode( int id, int dist,  String  name){
+        priorityQueueNode( int id, int dist,  const String&  name){
             cityId = id;
             priority = dist;
             cityName = name;
@@ -30,8 +30,7 @@ private:
 public:
     PriorityQueue();
     ~PriorityQueue();
-    priorityQueueNode peek();
-    void enqueue( int id, int dist, String name);
+    void enqueue( int id, int dist, const String& name);
     priorityQueueNode dequeue();
     bool isEmpty();
 };

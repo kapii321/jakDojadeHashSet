@@ -6,7 +6,6 @@
 
 PathReconstructionList::PathReconstructionList() {
     head = nullptr;
-    tail = nullptr;
 }
 
 PathReconstructionList::~PathReconstructionList() {
@@ -17,11 +16,10 @@ PathReconstructionList::~PathReconstructionList() {
     }
 }
 
-void PathReconstructionList::reverseOrderPathAdding(String name) {
+void PathReconstructionList::reverseOrderPathAdding(const String& name) {
     PathReconstructionNode* newNode = new PathReconstructionNode(name);
     if(head == nullptr){
         head = newNode;
-        tail = newNode;
     }
     else {
         newNode->next = head;

@@ -15,13 +15,11 @@ private:
         int id;
         int distance;
         NeighbourNode * next;
-        NeighbourNode * prev;
-        NeighbourNode(String name, int cityID,int dist){
+        NeighbourNode(const String& name, int cityID,int dist){
             cityName= name;
             id=cityID;
             distance= dist;
             next = nullptr;
-            prev = nullptr;
         }
     };
     NeighbourNode* head;
@@ -32,9 +30,8 @@ public:
 
     ~NeighboursList();
 
-    void addNeighbourToEnd(String name,int cityID, int distance);
+    void addNeighbourToEnd(const String& name,int cityID, int distance);
 
-    //void removeNeighbour(String name);
 };
 
 
