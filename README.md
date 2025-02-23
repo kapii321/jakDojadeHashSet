@@ -20,11 +20,11 @@ This project implements a navigation system for a rectangular map divided into s
 
 2. Next h lines: Map representation using:
 
--. for empty fields (impassable)
+- . for empty fields (impassable)
 
--# for roads (passable)
+- \# for roads (passable)
 
--* for cities (passable, starting or ending points of names)
+- * for cities (passable, starting or ending points of names)
 
 -Letters/numbers for city names (impassable)
 
