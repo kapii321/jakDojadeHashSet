@@ -54,6 +54,7 @@ For each query, output a single line:
 Example
 
 Input:
+```
 
 20 20
 .........GDANSK.....
@@ -81,12 +82,14 @@ Input:
 KIELCE KRAKOW 0
 KRAKOW GDANSK 0
 KRAKOW GDANSK 1
+```
 
 Output:
-
+```
 5
 40
 40 KIELCE SZCZECIN
+```
 
 **Technologies Used**
 
