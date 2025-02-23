@@ -24,7 +24,7 @@ This project implements a navigation system for a rectangular map divided into s
 
 - \# for roads (passable)
 
-- * for cities (passable, starting or ending points of names)
+- \* for cities (passable, starting or ending points of names)
 
 -Letters/numbers for city names (impassable)
 
