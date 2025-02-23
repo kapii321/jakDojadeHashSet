@@ -6,13 +6,13 @@ This project implements a navigation system for a rectangular map divided into s
 
 **Features**
 
-- Custom Data Structures: Implements a DoubleLinkedList and HashSet instead of standard STL containers.
+- **Custom Data Structures:** Implements a DoubleLinkedList and HashSet instead of standard STL containers.
 
-- Graph Representation: Represents the map as a graph where roads and cities act as nodes.
+- **Graph Representation:** Represents the map as a graph where roads and cities act as nodes.
 
-- Pathfinding Algorithms: Uses BFS for unweighted shortest paths and Dijkstra’s algorithm for weighted shortest paths with air travel.
+- **Pathfinding Algorithms:** Uses BFS for unweighted shortest paths and Dijkstra’s algorithm for weighted shortest paths with air travel.
 
-- Memory Management: Custom implementation of data structures with manual memory handling (smart pointers from the standard library are not used).
+- **Memory Management:** Custom implementation of data structures with manual memory handling (smart pointers from the standard library are not used).
 
 **Input Format**
 
