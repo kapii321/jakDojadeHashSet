@@ -2,7 +2,10 @@
 
 **Overview**
 
-This project implements a navigation system for a rectangular map divided into squares. The map consists of empty fields (impassable), roads (passable in both directions), and cities (passable like roads). Additionally, certain cities are connected by one-way air travel routes. The system allows users to determine the shortest travel time between cities using road and air connections, with optional route details.
+This project implements a navigation system for a rectangular map divided into squares.
+The map consists of empty fields (impassable), roads (passable in both directions), and cities (passable like roads). 
+Additionally, certain cities are connected by one-way air travel routes.
+The system allows users to determine the shortest travel time between cities using road and air connections, with optional route details.
 
 **Features**
 
